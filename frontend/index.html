@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Small Wins turns an overwhelming thought dump into one kind next step.">
+    <title>Small Wins</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="shell">
+      <p class="eyebrow">A tiny agent for heavy days</p>
+      <h1>Let’s make the next<br><em>ten minutes</em> easier.</h1>
+      <p class="intro">Put the whole messy thought here. Small Wins will help you find one kind, doable place to begin.</p>
+
+      <section class="card" aria-labelledby="form-title">
+        <h2 id="form-title">What’s taking up space?</h2>
+        <textarea id="thoughts" maxlength="4000" placeholder="I need to prepare my demo, answer messages, and I keep avoiding it..."></textarea>
+        <div class="controls">
+          <label>Energy
+            <select id="energy">
+              <option value="low">Low battery</option>
+              <option value="medium" selected>Some fuel</option>
+              <option value="high">Ready to go</option>
+            </select>
+          </label>
+          <label>Vibe
+            <select id="tone">
+              <option value="gentle" selected>Gentle</option>
+              <option value="direct">Straight-up</option>
+              <option value="playful">A little playful</option>
+            </select>
+          </label>
+        </div>
+        <button id="plan-button">Find my small win <span aria-hidden="true">→</span></button>
+        <p id="status" class="status" role="status"></p>
+      </section>
+
+      <section id="result" class="result" hidden aria-live="polite">
+        <p class="result-label">Your small win</p>
+        <h2 id="headline"></h2>
+        <div class="next-step"><span id="minutes"></span><strong id="next-step"></strong></div>
+        <p id="why"></p>
+        <blockquote id="permission"></blockquote>
+        <p class="when-done"><strong>When you’re done:</strong> <span id="when-done"></span></p>
+        <button id="copy-button" class="secondary">Copy my next step</button>
+      </section>
+      <p class="footer">No accounts. No productivity guilt. Just one next step.</p>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>

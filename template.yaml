@@ -1,0 +1,48 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Small Wins - a kind next-step agent powered by Amazon Bedrock
+
+Globals:
+  Function:
+    Timeout: 30
+    MemorySize: 512
+    Runtime: python3.12
+    Architectures:
+      - arm64
+    Environment:
+      Variables:
+        MODEL_ID: !Ref ModelId
+
+Parameters:
+  ModelId:
+    Type: String
+    Default: amazon.nova-lite-v1:0
+    Description: Bedrock model ID available in the deployment region
+
+Resources:
+  PlanFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: backend/
+      Handler: app.handler
+      Policies:
+        - Statement:
+            - Effect: Allow
+              Action:
+                - bedrock:Converse
+              Resource: '*'
+      Events:
+        Plan:
+          Type: Api
+          Properties:
+            Path: /plan
+            Method: post
+            Cors:
+              AllowOrigin: "'*'"
+              AllowHeaders: "'content-type'"
+              AllowMethods: "'POST,OPTIONS'"
+
+Outputs:
+  ApiUrl:
+    Description: API URL for the frontend
+    Value: !Sub https://${ServerlessRestApi}.execute-api.${AWS::Region}.${AWS::URLSuffix}/Prod/plan
