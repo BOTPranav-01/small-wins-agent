@@ -26,7 +26,7 @@ I chose a small serverless architecture because the important part of this chall
 
 The most useful lesson was that “delightful” is often a constraint, not an animation. Limiting the agent to one action made the prompt, response schema, interface, and error handling better. I also learned to treat model output as untrusted input: validate it, keep the fallback honest, and make failures visible.
 
-The project is open source here: **[add the public GitHub URL]**.
+The project is open source here: **https://github.com/BOTPranav-01/small-wins-agent**.
 
 The live demo is here: **[add the deployed URL]**.
 
